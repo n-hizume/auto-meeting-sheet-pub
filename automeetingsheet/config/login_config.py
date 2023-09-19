@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from config_base import ConfigBase
+from .config_base import ConfigBase
 
 
 class LoginConfig(ConfigBase):
