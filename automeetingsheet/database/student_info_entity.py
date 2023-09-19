@@ -113,12 +113,16 @@ class StudentInfoEntity(Base):
         )
 
     @staticmethod
-    def __parse_master_str(s: str) -> Tuple[str, int]:
+    def __parse_master_str(s: str) -> Tuple[str, int] | None:
+        if s == "":
+            return None
         pair = s.split(",")
         return (pair[0], int(pair[1]))
 
     @staticmethod
-    def __parse_master_pair(pair: Tuple[str, int]) -> str:
+    def __parse_master_pair(pair: Tuple[str, int] | None) -> str:
+        if pair is None:
+            return ""
         return f"{pair[0]},{pair[1]}"
 
 
