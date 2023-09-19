@@ -1,0 +1,7 @@
+*.pyc
+.python-version
+.DS_Store
+.vscode/
+
+*.pdf
+*.xlsx
