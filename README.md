@@ -10,7 +10,12 @@ python automeetingsheet/main.py
 
 
 ## テスト
+```
 python -m unittest
+```
+
+
+`pdf_writer, gui, scraping/session` に関しては各クラス定義ファイルを実行することで挙動確認
 
 ## 各フォルダ説明
 - automeetingsheet
