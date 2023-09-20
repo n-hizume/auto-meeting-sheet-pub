@@ -23,6 +23,9 @@ class ConfigBase(metaclass=ABCMeta):
     @staticmethod
     @abstractmethod
     def validate_config(config):
+        """
+        boolで返してもいいが、どのプロパティがどう間違っているかを伝えるため、エラーをraiseする。
+        """
         pass
 
     @classmethod
