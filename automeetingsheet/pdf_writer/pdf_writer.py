@@ -1,25 +1,10 @@
 from datetime import datetime
-import os
-
 from PyPDF2 import PdfWriter
-from reportlab.pdfbase import pdfmetrics
-from reportlab.pdfbase.ttfonts import TTFont
-from reportlab.pdfbase.cidfonts import UnicodeCIDFont
 
 from automeetingsheet.config.login_config import LoginConfig
 from automeetingsheet.models.student_info import StudentInfo
 from automeetingsheet.pdf_writer.pages.page import Page
 from automeetingsheet.pdf_writer.pages.old_page import OldPage
-
-
-# フォントの設定
-MS = "C:\Windows\Fonts/msgothic.ttc"
-FONT = "MS P Gothic"
-if os.path.exists(MS):
-    pdfmetrics.registerFont(TTFont(FONT, MS))
-else:
-    pdfmetrics.registerFont(UnicodeCIDFont("HeiseiKakuGo-W5"))
-    FONT = "HeiseiKakuGo-W5"
 
 
 # PDF書き込みのためのhandlerクラス

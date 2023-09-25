@@ -4,8 +4,13 @@ import os
 from PyPDF2 import PageObject, PdfReader, PdfWriter
 from reportlab.lib.pagesizes import A4, landscape
 from reportlab.pdfgen import canvas
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase.cidfonts import UnicodeCIDFont
 
 TEMPLATE_DIR = "templates"
+
+FONT_NAME = "HeiseiMin-W3"
+pdfmetrics.registerFont(UnicodeCIDFont(FONT_NAME))
 
 
 # Pageの基底クラス

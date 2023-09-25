@@ -17,7 +17,7 @@ def get_best_font_size(max_size: float, max_width: int, text: str):
         if res in "FWA":
             text_len += 1
         elif res in "HNa":
-            text_len += 0.55
+            text_len += 0.4
     if text_len == 0:
         text_len += 1
     return min(max_size, max_width / text_len)

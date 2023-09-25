@@ -7,7 +7,7 @@ from reportlab.pdfgen import canvas
 from automeetingsheet.models.course import Course
 from automeetingsheet.models.student_info import StudentInfo
 from automeetingsheet.pdf_writer.pages.utils import get_best_font_size
-from automeetingsheet.pdf_writer.pages.page_base import PageBase
+from automeetingsheet.pdf_writer.pages.page_base import PageBase, FONT_NAME
 
 
 # 新ページ
@@ -24,6 +24,7 @@ class Page(PageBase):
     ) -> "Page":
         packet = io.BytesIO()
         can = canvas.Canvas(packet, pagesize=landscape(A4))
+        can.setFont(FONT_NAME, 10.0)
         can.setFontSize(10.0)
 
         # 名前, 高校, 学年, 志望校の行
@@ -35,7 +36,7 @@ class Page(PageBase):
         can.drawString(255, y, school_name)
         can.setFontSize(16.0)
         can.drawString(388, y, info.grade)
-        can.setFontSize(get_best_font_size(16.0, 380, info.univ))
+        can.setFontSize(get_best_font_size(16.0, 300, info.univ))
         can.drawString(490, y, info.univ)
 
         # 今週の学習履歴
@@ -57,7 +58,7 @@ class Page(PageBase):
             350, y, "{:.2f}".format(info.calc_weekly_required_num(deadline))
         )
 
-        # 講座情報。
+        # 講座情報
         base_y = 220
         delta_y = -16.7
         for course in cls.extract_courses(info.courses):
@@ -97,7 +98,7 @@ class Page(PageBase):
         """
         学習履歴の行を書き込む
         """
-        can.setFontSize(8.0)
+        can.setFontSize(7.0)
         can.drawCentredString(79, y, info.created_date.strftime("%Y/%m/%d"))
         can.drawCentredString(127, y, info.time)
 
@@ -139,7 +140,7 @@ class Page(PageBase):
         if "】" in course.title:
             course.title = course.title.split("】")[1]
 
-        can.setFontSize(get_best_font_size(10.0, 235, course.title))
+        can.setFontSize(get_best_font_size(10.0, 190, course.title))
 
         can.drawString(59, y, course.title)
         cls.write_fraction(
@@ -161,7 +162,7 @@ class Page(PageBase):
         can.drawCentredString(572 + delta_x, y, str(course.test_s_num))
         can.drawCentredString(572 + 2 * delta_x, y, str(course.miss_test_num))
 
-        can.setFontSize(get_best_font_size(8.0, 155, course.details))
+        can.setFontSize(get_best_font_size(8.0, 120, course.details))
         can.drawString(660, y, course.details)
 
     @classmethod
