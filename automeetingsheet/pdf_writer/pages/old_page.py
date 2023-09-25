@@ -7,9 +7,8 @@ from reportlab.pdfgen import canvas
 from automeetingsheet.models.course import Course
 
 from automeetingsheet.models.student_info import StudentInfo
-
-from .page_base import PageBase
-from .utils import get_best_font_size
+from automeetingsheet.pdf_writer.pages.page_base import PageBase
+from automeetingsheet.pdf_writer.pages.utils import get_best_font_size
 
 
 TODAY = date.today()
