@@ -26,7 +26,7 @@ python -m unittest
   - models : 生徒情報・講座情報などのインターフェース定義
   - pdf_writer : PDF作成のためのモジュール
     - pages : PDFに使うページの管理
-  - scraping : Webからデータを取得するモジュール
+  - scraping : Webからデータを取得するモジュール. ※実装の大半は企業秘密
   - main.py : 実行スクリプト
 - config : `automeetingsheet/config`に対応するjsonファイル
 - database : `automeetingsheet/database`に対応するDBファイルの置き場
