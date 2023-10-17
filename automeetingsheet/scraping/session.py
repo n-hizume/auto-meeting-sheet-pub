@@ -111,7 +111,7 @@ class WebSession:
         # secret
         return []
 
-    # StundentInfo.href のページに移動し、生徒の詳細情報をStudentInfoに追加
+    # StudentInfo.href のページに移動し、生徒の詳細情報をStudentInfoに追加
     def add_students_detail(self, students: list[StudentInfo]):
         # secret
         pass

@@ -114,7 +114,7 @@ class StudentInfoEntity(Base):
 
     @staticmethod
     def __parse_master_str(s: str) -> Tuple[str, int] | None:
-        if s == "":
+        if len(s) < 2:
             return None
         pair = s.split(",")
         return (pair[0], int(pair[1]))

@@ -16,6 +16,7 @@ pdfmetrics.registerFont(UnicodeCIDFont(FONT_NAME))
 # Pageの基底クラス
 class PageBase(PageObject, metaclass=ABCMeta):
     template_file_name: str = ""
+    font_name = FONT_NAME
 
     @classmethod
     @property

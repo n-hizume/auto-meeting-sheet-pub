@@ -7,7 +7,7 @@ from reportlab.pdfgen import canvas
 from automeetingsheet.models.course import Course
 
 from automeetingsheet.models.student_info import StudentInfo
-from automeetingsheet.pdf_writer.pages.page_base import PageBase, FONT_NAME
+from automeetingsheet.pdf_writer.pages.page_base import PageBase
 from automeetingsheet.pdf_writer.pages.utils import get_best_font_size
 
 
@@ -22,8 +22,7 @@ class OldPage(PageBase):
     def create(cls, info: StudentInfo, deadline: date) -> "OldPage":
         packet = io.BytesIO()
         can = canvas.Canvas(packet, pagesize=A4)
-        can.setFont(FONT_NAME, 10.0)
-        can.setFontSize(10.0)
+        can.setFont(cls.font_name, 10.0)
 
         # 名前, 高校, 学年, 志望校の行
         y = 805
@@ -61,8 +60,11 @@ class OldPage(PageBase):
         can.drawCentredString(x, 748, f"{deadline.month}月末受講終了には")
 
         # 受講終了予定日
-        can.setFontSize(get_best_font_size(14, 50, info.finish_date[2:]))
-        can.drawCentredString(x, 558, info.finish_date[2:])
+        finish_date = (
+            info.finish_date[2:] if len(info.finish_date) > 2 else info.finish_date
+        )
+        can.setFontSize(get_best_font_size(14, 50, finish_date))
+        can.drawCentredString(x, 558, finish_date)
 
         y = 508
         # 在校時間

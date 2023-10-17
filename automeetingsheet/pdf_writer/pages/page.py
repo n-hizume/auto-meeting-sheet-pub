@@ -7,7 +7,7 @@ from reportlab.pdfgen import canvas
 from automeetingsheet.models.course import Course
 from automeetingsheet.models.student_info import StudentInfo
 from automeetingsheet.pdf_writer.pages.utils import get_best_font_size
-from automeetingsheet.pdf_writer.pages.page_base import PageBase, FONT_NAME
+from automeetingsheet.pdf_writer.pages.page_base import PageBase
 
 
 # 新ページ
@@ -24,8 +24,7 @@ class Page(PageBase):
     ) -> "Page":
         packet = io.BytesIO()
         can = canvas.Canvas(packet, pagesize=landscape(A4))
-        can.setFont(FONT_NAME, 10.0)
-        can.setFontSize(10.0)
+        can.setFont(cls.font_name, 10.0)
 
         # 名前, 高校, 学年, 志望校の行
         y = 522

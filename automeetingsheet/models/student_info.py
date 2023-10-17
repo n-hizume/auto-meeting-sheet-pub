@@ -54,6 +54,9 @@ class StudentInfo:
     href: str = ""
     courses: list[Course] = field(default_factory=lambda: [])
 
+    def __str__(self) -> str:
+        return self.name
+
     # 受講率(max1.0)
     @property
     def class_done_ratio(self) -> float:
